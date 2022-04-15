@@ -134,7 +134,7 @@ static event_t *event_new(const char *trigger) {
 /* subsystem functions */
 static inline void _try_event(event_registration_t *er, event_t *event) {
     /* er is already locked */
-    if (strcmp(er->trigger, event->trigger) != 0)
+    if (strcmp(er->trigger, event->trigger) != 0 && strcmp(er->trigger, "*") != 0)
         return;
 
     if (er->emit)
